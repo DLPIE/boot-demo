@@ -5,11 +5,11 @@ spring:
   datasource:
     #数据库用户名
     username: root
-    #数据库用户密码
-    password: 123456
+    #数据库用户密码（本地是1234、linux是123456）
+    password: 1234
     #serverTimezone=UTC 解决市区的报错 一般mysql是8.0以上的是必须配置这个
     #userUnicode=true&characterEncoding=utf-8 指定字符编码、解码格式
-    url: jdbc:mysql://121.40.192.26:3307/metest?serverTimezone=UTC&userUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/metest?serverTimezone=UTC&userUnicode=true&characterEncoding=utf-8
     #设置驱动类
     driver-class-name: com.mysql.cj.jdbc.Driver
     #设置数据源
@@ -42,3 +42,17 @@ mybatis:
   type-aliases-package: com.dl.pojo
   #指定位置扫描Mapper接口对应的XML文件 classpath:xml文件位置
   mapper-locations: classpath:mapper/*.xml
+
+# 配置MyBatis-Plus
+mybatis-plus:
+  # 配置mapper文件位置
+  mapper-locations: classpath:/mapper/*.xml
+  # 配置实体扫描路径
+  type-aliases-package: com.dl.pojo
+  configuration:
+    map-underscore-to-camel-case: true # 是否开启下划线和驼峰的映射
+  # 配置全局配置文件
+  global-config:
+    db-config:
+      id-type: auto # id自增
+      field-strategy: not_null # 更新策略：只更新非空字段
