@@ -7,4 +7,6 @@ import java.io.Serializable;
 @Data
 public class UserRequest implements Serializable {
     private Integer userId;
+
+
 }
